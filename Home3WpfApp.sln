@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Home3WpfApp", "Home3WpfApp\Home3WpfApp.csproj", "{7317B921-37D0-4A8F-B1AD-B7511205DA12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7317B921-37D0-4A8F-B1AD-B7511205DA12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7317B921-37D0-4A8F-B1AD-B7511205DA12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7317B921-37D0-4A8F-B1AD-B7511205DA12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7317B921-37D0-4A8F-B1AD-B7511205DA12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F895097-D870-4B85-8996-60ACD5404041}
+	EndGlobalSection
+EndGlobal
