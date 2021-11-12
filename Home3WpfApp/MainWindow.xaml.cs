@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,7 +46,7 @@ namespace Home3WpfApp
         }
         private void bold_Click(object sender, RoutedEventArgs e)
         {
-            if (tBox.FontWeight!=FontWeights.Bold)
+            if (tBox.FontWeight != FontWeights.Bold)
             {
                 tBox.FontWeight = FontWeights.Bold;
             }
@@ -52,19 +54,19 @@ namespace Home3WpfApp
             {
                 tBox.FontWeight = FontWeights.Normal;
             }
-            
+
         }
 
         private void italic_Click(object sender, RoutedEventArgs e)
         {
             if (tBox.FontStyle != FontStyles.Italic)
-            {                
+            {
                 tBox.FontStyle = FontStyles.Italic;
             }
             else
             {
                 tBox.FontStyle = FontStyles.Normal;
-            }            
+            }
         }
 
         private void underline_Click(object sender, RoutedEventArgs e)
@@ -86,6 +88,31 @@ namespace Home3WpfApp
         private void red_Click(object sender, RoutedEventArgs e)
         {
             tBox.Foreground = Brushes.Red;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                tBox.Text = File.ReadAllText(openFileDialog.FileName);
+            }
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
+            if (saveFileDialog.ShowDialog()==true)
+            {
+                File.WriteAllText(saveFileDialog.FileName, tBox.Text);
+            }
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
