@@ -28,7 +28,7 @@ namespace Home3WpfApp
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        {            
             string fontName = ((sender as ComboBox).SelectedItem as TextBlock).Text;
             if (tBox != null)
             {
@@ -43,21 +43,56 @@ namespace Home3WpfApp
             {
                 tBox.FontSize = Convert.ToDouble(fontSize);
             }
-        }
-        private void bold_Click(object sender, RoutedEventArgs e)
+        }       
+
+        private void ExitExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            if (tBox.FontWeight != FontWeights.Bold)
+            Application.Current.Shutdown();
+        }
+
+        private void OpenExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
             {
-                tBox.FontWeight = FontWeights.Bold;
+                tBox.Text = File.ReadAllText(openFileDialog.FileName);
+            }
+        }
+
+        private void SaveExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText(saveFileDialog.FileName, tBox.Text);
+            }
+        }
+
+        private void RedExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            tBox.Foreground = Brushes.Red;
+        }
+
+        private void BlackExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            tBox.Foreground = Brushes.Black;
+        }
+
+        private void UnderlineExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (tBox.TextDecorations != TextDecorations.Underline)
+            {
+                tBox.TextDecorations = TextDecorations.Underline;
             }
             else
             {
-                tBox.FontWeight = FontWeights.Normal;
+                tBox.TextDecorations = null;
             }
-
         }
 
-        private void italic_Click(object sender, RoutedEventArgs e)
+        private void ItalicExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (tBox.FontStyle != FontStyles.Italic)
             {
@@ -69,50 +104,16 @@ namespace Home3WpfApp
             }
         }
 
-        private void underline_Click(object sender, RoutedEventArgs e)
+        private void BoldExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            if (tBox.TextDecorations != TextDecorations.Underline)
+            if (tBox.FontWeight != FontWeights.Bold)
             {
-                tBox.TextDecorations = TextDecorations.Underline;
+                tBox.FontWeight = FontWeights.Bold;
             }
             else
             {
-                tBox.TextDecorations = null;
+                tBox.FontWeight = FontWeights.Normal;
             }
-        }
-        private void black_Click(object sender, RoutedEventArgs e)
-        {
-            tBox.Foreground = Brushes.Black;
-        }
-
-        private void red_Click(object sender, RoutedEventArgs e)
-        {
-            tBox.Foreground = Brushes.Red;
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                tBox.Text = File.ReadAllText(openFileDialog.FileName);
-            }
-        }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
-            if (saveFileDialog.ShowDialog()==true)
-            {
-                File.WriteAllText(saveFileDialog.FileName, tBox.Text);
-            }
-        }
-
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }
