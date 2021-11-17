@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Home3WpfApp"
+        xmlns:local="clr-namespace:Home3WpfApp"       
         mc:Ignorable="d"
         Title="Текстовый редактор" Height="450" Width="800" MinWidth="650" MinHeight="200" WindowStartupLocation="CenterScreen">
     <Window.CommandBindings>
@@ -15,7 +15,7 @@
         <CommandBinding Command="local:MyCommands.Bold" Executed="BoldExecuted"/>
         <CommandBinding Command="Open" Executed="OpenExecuted"/>
         <CommandBinding Command="Save" Executed="SaveExecuted"/>
-    </Window.CommandBindings>
+    </Window.CommandBindings>    
     <Grid>        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -42,15 +42,15 @@
         </DockPanel>
         <ToolBarTray Grid.Row="1">
             <ToolBar Margin="5" Padding="5">
-                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" IsEditable="True" SelectionChanged = "ComboBox_SelectionChanged" >
-                    <TextBlock Text="Arial" />
+                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" IsEditable="True" SelectionChanged = "ComboBox_SelectionChanged"  ItemsSource="{StaticResource fontName}">
+                    <!--<TextBlock Text="Arial" />
                     <TextBlock Text="Times New Roman" />
-                    <TextBlock Text="Verdana" />
+                    <TextBlock Text="Verdana" />-->
                 </ComboBox>
-                <ComboBox Margin="5" Padding="5" SelectedIndex="1" Width="50" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged_1">
-                    <TextBlock Text="14"/>
+                <ComboBox x:Name="cmbx1" Margin="5" Padding="5" SelectedIndex="1" Width="50" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource fontSize}">
+                    <!--<TextBlock Text="14"/>
                     <TextBlock Text="16"/>
-                    <TextBlock Text="18"/>
+                    <TextBlock Text="18"/>-->
                 </ComboBox>
             </ToolBar>
             <ToolBar Margin="5" Padding="5">
