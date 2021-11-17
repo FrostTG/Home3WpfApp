@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Home3WpfApp"       
         mc:Ignorable="d"
-        Title="Текстовый редактор" Height="450" Width="800" MinWidth="650" MinHeight="200" WindowStartupLocation="CenterScreen">
+        Title="Текстовый редактор" Height="450" Width="800" MinWidth="650" MinHeight="200" WindowStartupLocation="CenterScreen" Style="{DynamicResource WindowStyle}">
     <Window.CommandBindings>
         <CommandBinding Command="local:MyCommands.Exit" Executed="ExitExecuted"/>
         <CommandBinding Command="local:MyCommands.Red" Executed="RedExecuted"/>
@@ -21,11 +21,12 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <DockPanel>
-            <Menu DockPanel.Dock="Top" VerticalContentAlignment="Top" Padding="5">
+            <Menu DockPanel.Dock="Top" Padding="5" Style="{DynamicResource DockPanelStyle}">
                 <MenuItem Header="_Файл">
-                    <MenuItem Header="_Открыть" Command="Open" />
+                    <MenuItem Header="_Открыть" Command="Open"/>
                     <MenuItem Header="_Сохранить" Command="Save"/>
                     <Separator/>
                     <MenuItem Command="local:MyCommands.Exit"/>
@@ -37,40 +38,42 @@
                     <MenuItem Header="Копировать" Command="Copy"/>
                     <MenuItem Header="Вставить" Command="Paste"/>                    
                 </MenuItem>
-                <MenuItem Header="Справка"/>
+                <MenuItem Header="Справка"/>           
             </Menu>
         </DockPanel>
-        <ToolBarTray Grid.Row="1">
-            <ToolBar Margin="5" Padding="5">
-                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" IsEditable="True" SelectionChanged = "ComboBox_SelectionChanged"  ItemsSource="{StaticResource fontName}">
-                    <!--<TextBlock Text="Arial" />
+        <ToolBarTray Grid.Row="1" Style="{DynamicResource ToolBarTrayStyle}">
+            <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarTrayStyle}">
+                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" IsEditable="True"  ItemsSource="{StaticResource fontName}">
+                    <!--SelectionChanged = "ComboBox_SelectionChanged"
+                    <TextBlock Text="Arial"  />
                     <TextBlock Text="Times New Roman" />
                     <TextBlock Text="Verdana" />-->
                 </ComboBox>
-                <ComboBox x:Name="cmbx1" Margin="5" Padding="5" SelectedIndex="1" Width="50" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource fontSize}">
-                    <!--<TextBlock Text="14"/>
+                <ComboBox x:Name="cmbx1" Margin="5" Padding="5" SelectedIndex="1" Width="50" IsEditable="True"  ItemsSource="{StaticResource fontSize}">
+                    <!--SelectionChanged="ComboBox_SelectionChanged_1
+                    <TextBlock Text="14" "/>
                     <TextBlock Text="16"/>
                     <TextBlock Text="18"/>-->
                 </ComboBox>
             </ToolBar>
-            <ToolBar Margin="5" Padding="5">
-                <Button x:Name="bold" Command="local:MyCommands.Bold" >
+            <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarTrayStyle}">
+                <Button x:Name="bold" Command="local:MyCommands.Bold" Style="{DynamicResource ButtonStyle}">
                     <Image Source="Data\bold_text.png" Height="35" Width="35"/>
                 </Button>
                 <Separator/>
-                <Button x:Name="italic" Command="local:MyCommands.Italic">
+                <Button x:Name="italic" Command="local:MyCommands.Italic" Style="{DynamicResource ButtonStyle}">
                     <Image Source="Data\italic_text.png" Height="35" Width="35"/>
                 </Button>
                 <Separator/>
-                <Button x:Name="underline" Command="local:MyCommands.Underline">
+                <Button x:Name="underline" Command="local:MyCommands.Underline" Style="{DynamicResource ButtonStyle}">
                     <Image Source="Data\underline_text.png" Height="35" Width="35"/>
                 </Button>
                 <Separator/>
             </ToolBar>
-            <ToolBar Margin="5" Padding="5">
-                <StackPanel VerticalAlignment="Center">                    
-                    <RadioButton x:Name="black" Content="Черный" IsChecked="True" Command="local:MyCommands.Black" />
-                    <RadioButton x:Name="red" Content="Красный" Command="local:MyCommands.Red" />
+            <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarTrayStyle}">
+                <StackPanel VerticalAlignment="Center">
+                    <RadioButton x:Name="black" Content="Черный" IsChecked="True" Command="local:MyCommands.Black" Style="{DynamicResource ButtonStyle}"/>
+                    <RadioButton x:Name="red" Content="Красный" Command="local:MyCommands.Red" Style="{DynamicResource ButtonStyle}" />
                 </StackPanel>                
             </ToolBar>
         </ToolBarTray>
@@ -78,5 +81,6 @@
                  FontFamily="Arial" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="ru-ru" 
                  VerticalScrollBarVisibility="Auto" FontWeight="Normal">            
         </TextBox>
+        <ComboBox Grid.Row="3" x:Name="styleBox"/>
     </Grid>
 </Window>
