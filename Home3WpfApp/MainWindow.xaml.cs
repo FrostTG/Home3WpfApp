@@ -28,14 +28,14 @@ namespace Home3WpfApp
             List<string> styles = new List<string>() { "Светлая тема", "Темная тема" };
             styleBox.ItemsSource = styles;
             styleBox.SelectionChanged += ThemeChange;
-            styleBox.SelectedIndex = 0;        
+            styleBox.SelectedIndex = 0;
         }
 
         private void ThemeChange(object sender, SelectionChangedEventArgs e)
         {
             int styleIndex = styleBox.SelectedIndex;
-            Uri uri = new Uri("Light.xaml",UriKind.Relative);
-            if (styleIndex==1)
+            Uri uri = new Uri("Light.xaml", UriKind.Relative);
+            if (styleIndex == 1)
             {
                 uri = new Uri("Dark.xaml", UriKind.Relative);
             }
@@ -47,9 +47,7 @@ namespace Home3WpfApp
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //string fontName = ((sender as ComboBox).SelectedItem as TextBlock).Text; вот так было
-            //string fontName = ((sender as ComboBox).SelectedItem as ItemsControl).ItemsSource.ToString();
-            string fontName = ((sender as ComboBox).SelectedItem as ResourceDictionary).Keys.ToString();
+            string fontName = ((sender as ComboBox).SelectedItem as string);
             if (tBox != null)
             {
                 tBox.FontFamily = new FontFamily(fontName);
@@ -58,17 +56,12 @@ namespace Home3WpfApp
 
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            //ResourceDictionary resource = Application.LoadComponent();
-            ////string fontSize = ((sender as ComboBox).SelectedItem as TextBlock).Text;
-            //string fontSize = ((sender as ComboBox).SelectedItem as Application).Resources.MergedDictionaries.Add(Dictionary1);
-            string fontSize = ((sender as ComboBox).SelectedItem as ResourceDictionary).Keys.ToString();
-
-
+            string fontSize = ((sender as ComboBox).SelectedItem as string);
             if (tBox != null)
             {
                 tBox.FontSize = Convert.ToDouble(fontSize);
             }
-        }       
+        }
 
         private void ExitExecuted(object sender, ExecutedRoutedEventArgs e)
         {

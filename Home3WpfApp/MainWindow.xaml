@@ -16,7 +16,7 @@
         <CommandBinding Command="Open" Executed="OpenExecuted"/>
         <CommandBinding Command="Save" Executed="SaveExecuted"/>
     </Window.CommandBindings>    
-    <Grid>        
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -26,34 +26,26 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top" Padding="5" Style="{DynamicResource DockPanelStyle}">
                 <MenuItem Header="_Файл">
-                    <MenuItem Header="_Открыть" Command="Open"/>
-                    <MenuItem Header="_Сохранить" Command="Save"/>
+                    <MenuItem Header="_Открыть" Command="Open" Style="{DynamicResource DockPanelStyle}"/>
+                    <MenuItem Header="_Сохранить" Command="Save" Style="{DynamicResource DockPanelStyle}"/>
                     <Separator/>
-                    <MenuItem Command="local:MyCommands.Exit"/>
+                    <MenuItem Command="local:MyCommands.Exit" Style="{DynamicResource DockPanelStyle}"/>
                 </MenuItem>
                 <MenuItem Header="Правка">
-                    <MenuItem Header="Отменить" Command="Undo"/>
+                    <MenuItem Header="Отменить" Command="Undo" Style="{DynamicResource DockPanelStyle}"/>
                     <Separator/>
-                    <MenuItem Header="Вырезать" Command="Cut"/>
-                    <MenuItem Header="Копировать" Command="Copy"/>
-                    <MenuItem Header="Вставить" Command="Paste"/>                    
+                    <MenuItem Header="Вырезать" Command="Cut" Style="{DynamicResource DockPanelStyle}"/>
+                    <MenuItem Header="Копировать" Command="Copy" Style="{DynamicResource DockPanelStyle}"/>
+                    <MenuItem Header="Вставить" Command="Paste" Style="{DynamicResource DockPanelStyle}" />
                 </MenuItem>
-                <MenuItem Header="Справка"/>           
+                <MenuItem Header="Справка"/>
             </Menu>
         </DockPanel>
         <ToolBarTray Grid.Row="1" Style="{DynamicResource ToolBarTrayStyle}">
-            <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarTrayStyle}">
-                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" IsEditable="True"  ItemsSource="{StaticResource fontName}">
-                    <!--SelectionChanged = "ComboBox_SelectionChanged"
-                    <TextBlock Text="Arial"  />
-                    <TextBlock Text="Times New Roman" />
-                    <TextBlock Text="Verdana" />-->
+            <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarTrayStyle}">                
+                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" IsEditable="True" SelectionChanged = "ComboBox_SelectionChanged" ItemsSource="{StaticResource fontName}">
                 </ComboBox>
-                <ComboBox x:Name="cmbx1" Margin="5" Padding="5" SelectedIndex="1" Width="50" IsEditable="True"  ItemsSource="{StaticResource fontSize}">
-                    <!--SelectionChanged="ComboBox_SelectionChanged_1
-                    <TextBlock Text="14" "/>
-                    <TextBlock Text="16"/>
-                    <TextBlock Text="18"/>-->
+                <ComboBox x:Name="cmbx1" Margin="5" Padding="5" SelectedIndex="1" Width="50" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource fontSize}">
                 </ComboBox>
             </ToolBar>
             <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarTrayStyle}">
@@ -74,12 +66,12 @@
                 <StackPanel VerticalAlignment="Center">
                     <RadioButton x:Name="black" Content="Черный" IsChecked="True" Command="local:MyCommands.Black" Style="{DynamicResource ButtonStyle}"/>
                     <RadioButton x:Name="red" Content="Красный" Command="local:MyCommands.Red" Style="{DynamicResource ButtonStyle}" />
-                </StackPanel>                
+                </StackPanel>
             </ToolBar>
         </ToolBarTray>
         <TextBox x:Name="tBox" Grid.Row="2" Margin="5" Padding="5" BorderThickness="2" FontSize="16"
                  FontFamily="Arial" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="ru-ru" 
-                 VerticalScrollBarVisibility="Auto" FontWeight="Normal">            
+                 VerticalScrollBarVisibility="Auto" FontWeight="Normal">
         </TextBox>
         <ComboBox Grid.Row="3" x:Name="styleBox"/>
     </Grid>
