@@ -42,11 +42,10 @@
             </Menu>
         </DockPanel>
         <ToolBarTray Grid.Row="1" Style="{DynamicResource ToolBarTrayStyle}">
-            <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarTrayStyle}">                
-                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" IsEditable="True" SelectionChanged = "ComboBox_SelectionChanged" ItemsSource="{StaticResource fontName}">
+            <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarTrayStyle}">
+                <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" IsEditable="True" SelectionChanged = "ComboBox_SelectionChanged" ItemsSource="{Binding Source={StaticResource fontName}}">
                 </ComboBox>
-                <ComboBox x:Name="cmbx1" Margin="5" Padding="5" SelectedIndex="1" Width="50" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource fontSize}">
-                </ComboBox>
+                <ComboBox x:Name="cmbx1" Margin="5" Padding="5" SelectedIndex="1" Width="50" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{Binding Source={StaticResource fontSize}}"/>
             </ToolBar>
             <ToolBar Margin="5" Padding="5" Style="{DynamicResource ToolBarTrayStyle}">
                 <Button x:Name="bold" Command="local:MyCommands.Bold" Style="{DynamicResource ButtonStyle}">

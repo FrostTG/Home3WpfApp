@@ -29,6 +29,7 @@ namespace Home3WpfApp
             styleBox.ItemsSource = styles;
             styleBox.SelectionChanged += ThemeChange;
             styleBox.SelectedIndex = 0;
+
         }
 
         private void ThemeChange(object sender, SelectionChangedEventArgs e)
@@ -132,6 +133,10 @@ namespace Home3WpfApp
             {
                 tBox.FontWeight = FontWeights.Normal;
             }
+        }
+        public static class FontS
+        {
+            public static int Size { get; set; }
         }
     }
 }
